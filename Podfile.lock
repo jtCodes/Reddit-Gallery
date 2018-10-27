@@ -1,0 +1,28 @@
+PODS:
+  - Alamofire (4.7.3)
+  - MobileVLCKit (3.1.5)
+  - SnapKit (4.0.1)
+  - SwiftSoup (1.7.4)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.7)
+  - MobileVLCKit
+  - SnapKit (~> 4.0.0)
+  - SwiftSoup
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - MobileVLCKit
+    - SnapKit
+    - SwiftSoup
+
+SPEC CHECKSUMS:
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  MobileVLCKit: 4d44e56380d0ee41c76f9ec7015d3a4b62a963a3
+  SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
+  SwiftSoup: 92f5b348c131aed8af04f4326db1579ab19fa08c
+
+PODFILE CHECKSUM: 7fd8859228af04fd530d0fb75d63298c02131545
+
+COCOAPODS: 1.5.3
