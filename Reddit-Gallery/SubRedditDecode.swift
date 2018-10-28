@@ -27,4 +27,17 @@ struct SubRedditDecode: Decodable {
         let url: String
         let is_video: Bool
     }
+    
+    struct Preview: Decodable {
+        let images: [Image]
+    }
+    
+    struct Image: Decodable {
+        let source: Source
+    }
+    
+    struct Source: Decodable {
+        let width: Int
+        let height: Int
+    }
 }

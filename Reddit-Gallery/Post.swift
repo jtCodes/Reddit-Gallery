@@ -16,4 +16,5 @@ struct Post {
     let maxThumb: String
     let fallBackThumb: String
     var availThumb: String
+    let ytVideoId: String
 }

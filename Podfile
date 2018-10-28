@@ -10,6 +10,7 @@ target 'Reddit-Gallery' do
   pod 'SnapKit', '~> 4.0.0'
   pod 'Alamofire', '~> 4.7'
   pod 'Kingfisher', '~> 4.8.1'
+  pod 'XCDYouTubeKit', '~> 2.6'
   
   target 'Reddit-GalleryTests' do
     inherit! :search_paths

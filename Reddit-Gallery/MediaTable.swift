@@ -35,6 +35,7 @@ class MediaTable: NSObject, UITableViewDataSource, UITableViewDelegate{
         tableView.estimatedRowHeight = 250
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10) //top,left,bottom,right
+        tableView.separatorColor = .clear
         
         super.init()
         tableView.delegate = self
@@ -67,7 +68,18 @@ class MediaTable: NSObject, UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        if var topController = UIApplication.shared.keyWindow?.rootViewController {
+            while let presentedViewController = topController.presentedViewController {
+                topController = presentedViewController
+            }
+            
+            let newViewController = MediaPageViewController()
+            newViewController.postMediaItems = postArray
+            newViewController.currentIndex = indexPath.row
+            newViewController.modalPresentationStyle = .overCurrentContext
+            UIApplication.shared.keyWindow?.windowLevel = UIWindow.Level.statusBar
+            topController.present(newViewController, animated: true, completion: nil)
+        }
     }
     
     func getAspectRatioAccordingToiPhones(cellImageFrame:CGSize,downloadedImage: UIImage)->CGFloat {

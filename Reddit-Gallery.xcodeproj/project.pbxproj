@@ -10,6 +10,8 @@
 		93F702F9DA8FB04920611713 /* Pods_Reddit_GalleryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 883285E37B320C279314F39F /* Pods_Reddit_GalleryUITests.framework */; };
 		B227793A1C06D0B870FD8E8D /* Pods_Reddit_Gallery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E4C6D2FC21DE94F7825D2E7 /* Pods_Reddit_Gallery.framework */; };
 		DEBB82F398E51E80FD7D7561 /* Pods_Reddit_GalleryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40B5D8BD17A0B85658FC0C42 /* Pods_Reddit_GalleryTests.framework */; };
+		ED2787022186065000F4A7A8 /* vlcBridging.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2787012186065000F4A7A8 /* vlcBridging.m */; };
+		ED2787042186077E00F4A7A8 /* MediaPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2787032186077E00F4A7A8 /* MediaPageViewController.swift */; };
 		ED705ACF218507C3005D0B17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED705ACE218507C3005D0B17 /* AppDelegate.swift */; };
 		ED705AD1218507C3005D0B17 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED705AD0218507C3005D0B17 /* ViewController.swift */; };
 		ED705AD4218507C3005D0B17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED705AD2218507C3005D0B17 /* Main.storyboard */; };
@@ -22,6 +24,7 @@
 		ED705B0121855151005D0B17 /* RedditApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED705B0021855151005D0B17 /* RedditApi.swift */; };
 		ED705B03218556FC005D0B17 /* MediaTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED705B02218556FC005D0B17 /* MediaTable.swift */; };
 		ED705B0521855711005D0B17 /* MediaTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED705B0421855711005D0B17 /* MediaTableCell.swift */; };
+		ED705B072186048B005D0B17 /* MediaItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED705B062186048B005D0B17 /* MediaItemViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,9 @@
 		9A7522035CA98805DA4BE17E /* Pods-Reddit-Gallery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reddit-Gallery.release.xcconfig"; path = "Pods/Target Support Files/Pods-Reddit-Gallery/Pods-Reddit-Gallery.release.xcconfig"; sourceTree = "<group>"; };
 		BE09D1C7A41D0E3679EB7C27 /* Pods-Reddit-GalleryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reddit-GalleryTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Reddit-GalleryTests/Pods-Reddit-GalleryTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D1A1DFC28026FE7DC2418C59 /* Pods-Reddit-GalleryUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reddit-GalleryUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Reddit-GalleryUITests/Pods-Reddit-GalleryUITests.release.xcconfig"; sourceTree = "<group>"; };
+		ED2787002186064F00F4A7A8 /* Reddit-Gallery-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Reddit-Gallery-Bridging-Header.h"; sourceTree = "<group>"; };
+		ED2787012186065000F4A7A8 /* vlcBridging.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = vlcBridging.m; sourceTree = "<group>"; };
+		ED2787032186077E00F4A7A8 /* MediaPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPageViewController.swift; sourceTree = "<group>"; };
 		ED705ACB218507C3005D0B17 /* Reddit-Gallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reddit-Gallery.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED705ACE218507C3005D0B17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED705AD0218507C3005D0B17 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +75,7 @@
 		ED705B0021855151005D0B17 /* RedditApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditApi.swift; sourceTree = "<group>"; };
 		ED705B02218556FC005D0B17 /* MediaTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTable.swift; sourceTree = "<group>"; };
 		ED705B0421855711005D0B17 /* MediaTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTableCell.swift; sourceTree = "<group>"; };
+		ED705B062186048B005D0B17 /* MediaItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaItemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +158,8 @@
 				ED705B0421855711005D0B17 /* MediaTableCell.swift */,
 				ED705B02218556FC005D0B17 /* MediaTable.swift */,
 				ED705AD0218507C3005D0B17 /* ViewController.swift */,
+				ED705B062186048B005D0B17 /* MediaItemViewController.swift */,
+				ED2787032186077E00F4A7A8 /* MediaPageViewController.swift */,
 				ED705B0021855151005D0B17 /* RedditApi.swift */,
 				ED705AFC21851018005D0B17 /* SubRedditDecode.swift */,
 				ED705AFE21855028005D0B17 /* Post.swift */,
@@ -158,6 +167,8 @@
 				ED705AD5218507C4005D0B17 /* Assets.xcassets */,
 				ED705AD7218507C4005D0B17 /* LaunchScreen.storyboard */,
 				ED705ADA218507C4005D0B17 /* Info.plist */,
+				ED2787012186065000F4A7A8 /* vlcBridging.m */,
+				ED2787002186064F00F4A7A8 /* Reddit-Gallery-Bridging-Header.h */,
 			);
 			path = "Reddit-Gallery";
 			sourceTree = "<group>";
@@ -252,6 +263,7 @@
 				TargetAttributes = {
 					ED705ACA218507C3005D0B17 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 					};
 					ED705ADE218507C4005D0B17 = {
 						CreatedOnToolsVersion = 10.0;
@@ -345,6 +357,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/XCDYouTubeKit/XCDYouTubeKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -353,6 +366,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XCDYouTubeKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -412,11 +426,14 @@
 			files = (
 				ED705AFD21851018005D0B17 /* SubRedditDecode.swift in Sources */,
 				ED705B0521855711005D0B17 /* MediaTableCell.swift in Sources */,
+				ED2787042186077E00F4A7A8 /* MediaPageViewController.swift in Sources */,
 				ED705B03218556FC005D0B17 /* MediaTable.swift in Sources */,
 				ED705AD1218507C3005D0B17 /* ViewController.swift in Sources */,
 				ED705ACF218507C3005D0B17 /* AppDelegate.swift in Sources */,
 				ED705AFF21855028005D0B17 /* Post.swift in Sources */,
+				ED705B072186048B005D0B17 /* MediaItemViewController.swift in Sources */,
 				ED705B0121855151005D0B17 /* RedditApi.swift in Sources */,
+				ED2787022186065000F4A7A8 /* vlcBridging.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -592,6 +609,7 @@
 			baseConfigurationReference = 10D947ED3C0CE9E12C994A06 /* Pods-Reddit-Gallery.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5USU3QG354;
 				ENABLE_BITCODE = NO;
@@ -603,6 +621,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "jtcodes.Reddit-Gallery";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Reddit-Gallery/Reddit-Gallery-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -613,6 +633,7 @@
 			baseConfigurationReference = 9A7522035CA98805DA4BE17E /* Pods-Reddit-Gallery.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5USU3QG354;
 				ENABLE_BITCODE = NO;
@@ -624,6 +645,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "jtcodes.Reddit-Gallery";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Reddit-Gallery/Reddit-Gallery-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -9,6 +9,9 @@
 import Foundation
 import SnapKit
 
+var portW:CGFloat = 0.0
+var portH:CGFloat = 0.0
+
 class MediaTableCell: UITableViewCell {
     
     let postImage: UIImageView = {
@@ -32,14 +35,14 @@ class MediaTableCell: UITableViewCell {
     
     func setupConstraints() {
         postImage.snp.makeConstraints { make in
-            let w = contentView.frame.size.width * 0.9
+            let w = contentView.frame.size.width
             let newH = w / 16 * 9
-
-            make.center.equalTo(contentView.snp.center)
+            portW = w
+            portH = newH
             make.width.equalTo(w)
             make.height.equalTo(newH)
-            make.top.equalTo(contentView.snp.top).offset(10)
-            make.bottom.equalTo(contentView.snp.bottom).offset(-10)
+            make.top.equalTo(contentView.snp.top).offset(1)
+            make.bottom.equalTo(contentView.snp.bottom).offset(0)
         }
     }
 }
