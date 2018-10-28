@@ -9,20 +9,31 @@
 import UIKit
 import Alamofire
 
-let reqUrl = "https://www.reddit.com/r/videos/new.json?"
+let reqUrl = "https://www.reddit.com/r/videos/hot.json?"
 
 class ViewController: UIViewController {
-
+    
+    var tableView: UITableView!
+    var mediaTable: MediaTable!
+    
+    var posts: [Post]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Alamofire.request(reqUrl).responseJSON { response in
-            if let data = response.data {
-                if let decodedSubRedditData = try? JSONDecoder().decode(SubRedditDecode.Root.self,from:  data) {
-                    print(decodedSubRedditData.data.children[0])
-                }
-            }
+        tableView = UITableView()
+        self.view.addSubview(tableView) //REMINDER: Add subview BEFORE snp make
+        tableView.snp.makeConstraints { make in
+            make.width.equalTo(self.view.snp.width)
+            make.top.equalTo(self.view.snp.top)
+            make.bottom.equalTo(self.view.snp.bottom)
         }
+        
+        fetchPosts(url: reqUrl, completion: {response in
+            print(response[0])
+            self.mediaTable = MediaTable(self.tableView, response[0] as! [Post])
+            self.mediaTable.tableView.reloadData()
+        })
     }
 }
 

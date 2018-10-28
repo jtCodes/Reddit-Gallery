@@ -9,7 +9,7 @@ target 'Reddit-Gallery' do
   pod 'MobileVLCKit'
   pod 'SnapKit', '~> 4.0.0'
   pod 'Alamofire', '~> 4.7'
-  pod 'SwiftSoup'
+  pod 'Kingfisher', '~> 4.8.1'
   
   target 'Reddit-GalleryTests' do
     inherit! :search_paths

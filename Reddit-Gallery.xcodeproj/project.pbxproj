@@ -18,6 +18,10 @@
 		ED705AE4218507C4005D0B17 /* Reddit_GalleryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED705AE3218507C4005D0B17 /* Reddit_GalleryTests.swift */; };
 		ED705AEF218507C4005D0B17 /* Reddit_GalleryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED705AEE218507C4005D0B17 /* Reddit_GalleryUITests.swift */; };
 		ED705AFD21851018005D0B17 /* SubRedditDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED705AFC21851018005D0B17 /* SubRedditDecode.swift */; };
+		ED705AFF21855028005D0B17 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED705AFE21855028005D0B17 /* Post.swift */; };
+		ED705B0121855151005D0B17 /* RedditApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED705B0021855151005D0B17 /* RedditApi.swift */; };
+		ED705B03218556FC005D0B17 /* MediaTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED705B02218556FC005D0B17 /* MediaTable.swift */; };
+		ED705B0521855711005D0B17 /* MediaTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED705B0421855711005D0B17 /* MediaTableCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +65,10 @@
 		ED705AEE218507C4005D0B17 /* Reddit_GalleryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reddit_GalleryUITests.swift; sourceTree = "<group>"; };
 		ED705AF0218507C4005D0B17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED705AFC21851018005D0B17 /* SubRedditDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubRedditDecode.swift; sourceTree = "<group>"; };
+		ED705AFE21855028005D0B17 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		ED705B0021855151005D0B17 /* RedditApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditApi.swift; sourceTree = "<group>"; };
+		ED705B02218556FC005D0B17 /* MediaTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTable.swift; sourceTree = "<group>"; };
+		ED705B0421855711005D0B17 /* MediaTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTableCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,8 +148,12 @@
 			isa = PBXGroup;
 			children = (
 				ED705ACE218507C3005D0B17 /* AppDelegate.swift */,
+				ED705B0421855711005D0B17 /* MediaTableCell.swift */,
+				ED705B02218556FC005D0B17 /* MediaTable.swift */,
 				ED705AD0218507C3005D0B17 /* ViewController.swift */,
+				ED705B0021855151005D0B17 /* RedditApi.swift */,
 				ED705AFC21851018005D0B17 /* SubRedditDecode.swift */,
+				ED705AFE21855028005D0B17 /* Post.swift */,
 				ED705AD2218507C3005D0B17 /* Main.storyboard */,
 				ED705AD5218507C4005D0B17 /* Assets.xcassets */,
 				ED705AD7218507C4005D0B17 /* LaunchScreen.storyboard */,
@@ -331,16 +343,16 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Reddit-Gallery/Pods-Reddit-Gallery-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSoup.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -399,8 +411,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED705AFD21851018005D0B17 /* SubRedditDecode.swift in Sources */,
+				ED705B0521855711005D0B17 /* MediaTableCell.swift in Sources */,
+				ED705B03218556FC005D0B17 /* MediaTable.swift in Sources */,
 				ED705AD1218507C3005D0B17 /* ViewController.swift in Sources */,
 				ED705ACF218507C3005D0B17 /* AppDelegate.swift in Sources */,
+				ED705AFF21855028005D0B17 /* Post.swift in Sources */,
+				ED705B0121855151005D0B17 /* RedditApi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
