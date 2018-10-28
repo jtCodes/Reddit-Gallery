@@ -34,8 +34,12 @@ class MediaTable: NSObject, UITableViewDataSource, UITableViewDelegate{
         tableView.tableFooterView = UIView(frame: .zero)
         tableView.estimatedRowHeight = 250
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10) //top,left,bottom,right
-        tableView.separatorColor = .clear
+//        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0) //top,left,bottom,right
+//        tableView.separatorColor = themeDict["cell"]
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        tableView.backgroundColor = themeDict["table"]
+        tableView.sectionIndexBackgroundColor = themeDict["table"]
+        tableView.tableFooterView = UIView() //hide empty rows
         
         super.init()
         tableView.delegate = self
@@ -52,6 +56,13 @@ class MediaTable: NSObject, UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let imageCell = tableView.dequeueReusableCell(withIdentifier: "imageCell") as! MediaTableCell
         imageCell.backgroundColor = .white
+        imageCell.titleLabel.text = postArray[indexPath.row].title
+        imageCell.separatorInset = UIEdgeInsets(top: 0, left: 10000, bottom: 0, right:0)
+        
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = themeDict["table"]
+        imageCell.selectedBackgroundView = backgroundView
+        
         let thumbUrl = postArray[indexPath.row].fallBackThumb
         imageCell.postImage.kf.setImage(with: URL(string: thumbUrl), completionHandler: {
             (image, error, cacheType, imageUrl) in
@@ -80,6 +91,24 @@ class MediaTable: NSObject, UITableViewDataSource, UITableViewDelegate{
             UIApplication.shared.keyWindow?.windowLevel = UIWindow.Level.statusBar
             topController.present(newViewController, animated: true, completion: nil)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "r/funny"
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let header = view as? UITableViewHeaderFooterView else { return }
+        header.textLabel?.font = UIFont.boldSystemFont(ofSize: 30)
+        header.textLabel?.frame = header.frame
+    }
+    
+    @nonobjc func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat.leastNormalMagnitude
     }
     
     func getAspectRatioAccordingToiPhones(cellImageFrame:CGSize,downloadedImage: UIImage)->CGFloat {

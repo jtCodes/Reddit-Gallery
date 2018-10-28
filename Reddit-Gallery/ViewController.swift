@@ -21,8 +21,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView = UITableView()
+        view.backgroundColor = themeDict["cell"] //blend table if seperator 
+        
+        tableView = UITableView(frame: view.frame, style: UITableView.Style.grouped)
         self.view.addSubview(tableView) //REMINDER: Add subview BEFORE snp make
+        
+        let statusBarView = UIView(frame: UIApplication.shared.statusBarFrame)
+        let statusBarColor = themeDict["table"]
+        statusBarView.backgroundColor = statusBarColor
+        view.addSubview(statusBarView)
+        statusBarView.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
+        
         tableView.snp.makeConstraints { make in
             make.width.equalTo(self.view.snp.width)
             make.top.equalTo(self.view.snp.top)
@@ -35,5 +44,8 @@ class ViewController: UIViewController {
             self.mediaTable.tableView.reloadData()
         })
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }
-
