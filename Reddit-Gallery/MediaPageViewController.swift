@@ -37,6 +37,7 @@ class MediaPageViewController: UIViewController, UIPageViewControllerDataSource,
         label.lineBreakMode = .byTruncatingMiddle
         label.textAlignment = .center
         label.font = label.font.withSize(10)
+        label.textColor = .white
         return label
     }()
     
@@ -94,7 +95,7 @@ class MediaPageViewController: UIViewController, UIPageViewControllerDataSource,
     
     var mediaItemControlIsHidden = false
     var replayButtonIsHidden = true
-    var isCurrentMediaWebm = false
+    var isCurrentMediaYt = true
     
     var vlcState = "paused"
     
@@ -146,12 +147,12 @@ class MediaPageViewController: UIViewController, UIPageViewControllerDataSource,
     }
     
     func newMediaItemDidAppeared(pageIndex: Int) {
-        
+        filenameLabel.text = postMediaItems[pageIndex].title
     }
     
     func mediaControlsVisibilityDidChange(isHidden: Bool) {
         if !isHidden {
-            vlcControlsContainer.isHidden = !isCurrentMediaWebm
+            vlcControlsContainer.isHidden = !isCurrentMediaYt
             mediaInfoContainer.isHidden = false
             self.mediaInfoContainer.snp.updateConstraints( { make in
                 make.top.equalTo(self.view.snp.top).offset(0)

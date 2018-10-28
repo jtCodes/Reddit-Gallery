@@ -107,14 +107,19 @@ class MediaItemViewController: UIViewController, UIScrollViewDelegate, UIGesture
         tapGesture.cancelsTouchesInView = false
         tapGesture.delegate = self
         
-        view.addGestureRecognizer(tapGesture)
+        imageView.addGestureRecognizer(tapGesture)
         view.addGestureRecognizer(panGestureRecognizer!)
         
         view.addSubview(backgroundView)
         //    scrollView.addSubview(closeButton)
         getStreamUrl()
+    
         group.notify(queue: .main) {
             self.createVideoView()
+            if self.viewIfLoaded?.window != nil {
+                // viewController is visible
+                self.mediaPlayer.play()
+            }
         }
     }
     
@@ -125,6 +130,7 @@ class MediaItemViewController: UIViewController, UIScrollViewDelegate, UIGesture
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
         print("did appear")
         //Clear previous reference incase user decided to cancel swipe
         parentVC?.delegate = nil
@@ -135,6 +141,10 @@ class MediaItemViewController: UIViewController, UIScrollViewDelegate, UIGesture
         parentVC?.delegate = self
         mediaPlayer.delegate = self
         mediaPlayer.play()
+        
+        if mediaPlayer.isPlaying {
+            activityIndicator.stopAnimating()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -144,6 +154,32 @@ class MediaItemViewController: UIViewController, UIScrollViewDelegate, UIGesture
     
     override func viewDidDisappear(_ animated: Bool) {
         print("did disappear")
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        let orientation = UIDevice.current.orientation
+        var widthToUse: CGFloat = portW
+        
+        if mediaItem.isYt {
+            if (orientation.isLandscape) {
+                print("Switched to landscape")
+                //Always fill entire screen
+                widthToUse = view.frame.size.height
+            }
+            else if(orientation.isPortrait) {
+                
+            }
+            imageView.snp.remakeConstraints { remake in
+                let oldWidth = CGFloat(widthToUse)
+                let scaleFactor = widthToUse / oldWidth
+                
+                let newHeight = CGFloat(oldWidth / 16 * 9) * scaleFactor
+                let newWidth = oldWidth * scaleFactor
+                
+                remake.width.equalTo(newWidth)
+                remake.height.equalTo(newHeight)
+            }
+        }
     }
     
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -286,22 +322,25 @@ class MediaItemViewController: UIViewController, UIScrollViewDelegate, UIGesture
     @objc func rotated() {
         
         let orientation = UIDevice.current.orientation
-        
+        var widthToUse: CGFloat = view.frame.size.width
+        var heightToUse: CGFloat = view.frame.size.height
         if mediaItem.is_video {
             if (orientation.isLandscape) {
                 print("Switched to landscape")
                 //Always fill entire screen
+                widthToUse = view.frame.size.height
+                heightToUse = view.frame.size.width
             }
             else if(orientation.isPortrait) {
-                print("Switched to portrait")
+
             }
             imageView.snp.remakeConstraints { remake in
-                let oldWidth = CGFloat(portW)
-                let scaleFactor = view.frame.size.width / oldWidth
+                let oldWidth = CGFloat(widthToUse)
+                let scaleFactor = widthToUse / oldWidth
                 
-                let newHeight = CGFloat(portH) * scaleFactor
+                let newHeight = CGFloat(oldWidth / 16 * 9) * scaleFactor
                 let newWidth = oldWidth * scaleFactor
-                print(newWidth < view.frame.size.width, portW, newWidth, view.frame.size.width )
+    
                 remake.width.equalTo(newWidth)
                 remake.height.equalTo(newHeight)
             }
@@ -500,17 +539,17 @@ class MediaItemViewController: UIViewController, UIScrollViewDelegate, UIGesture
                 make.centerY.equalTo(view)
             }
             
-//            if (!mediaItem.is_video){
-//                scrollView.snp.makeConstraints { make in
-//                    make.width.equalTo(view.snp.width)
-//                    make.height.equalTo(view.snp.height)
-//                }
-//
-//                imageView.snp.makeConstraints { make in
-//                    make.width.equalTo(view.snp.width)
-//                    make.height.equalTo(view.snp.height)
-//                }
-//            }
+            if (!mediaItem.isYt){
+                scrollView.snp.makeConstraints { make in
+                    make.width.equalTo(view.snp.width)
+                    make.height.equalTo(view.snp.height)
+                }
+
+                imageView.snp.makeConstraints { make in
+                    make.width.equalTo(view.snp.width)
+                    make.height.equalTo(view.snp.height)
+                }
+            }
             //      closeButton.snp.makeConstraints { make in
             //        make.top.equalTo(view.snp.top).offset(50.0)
             //        make.left.equalTo(view.snp.left).offset(10.0)

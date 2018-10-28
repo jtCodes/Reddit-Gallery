@@ -23,7 +23,7 @@ func fetchPosts(url: String, completion: @escaping (_ success: [Any]) -> Void) {
                                     is_video: postData.data.is_video,
                                     maxThumb: "http://img.youtube.com/vi/" + videoID + "/maxresdefault.jpg",
                                     fallBackThumb: "http://img.youtube.com/vi/" + videoID + "/sddefault.jpg",
-                                    availThumb: "", ytVideoId: videoID)
+                                    availThumb: "", ytVideoId: videoID, isYt: videoID == "" ? false : true)
                     if videoID != "" {
                         posts.append(post)
                     }

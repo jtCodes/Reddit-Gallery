@@ -17,4 +17,5 @@ struct Post {
     let fallBackThumb: String
     var availThumb: String
     let ytVideoId: String
+    let isYt: Bool
 }
