@@ -1,5 +1,5 @@
 # Reddit-Gallery
-Browse through reddit's media contents quicky with Reddit Gallery. 
+Demo app for my Twitter-like media slider. 
 
 ## Design
 ![](https://i.imgur.com/B3j1BpY.png) ![Demo CountPages alpha](https://i.imgur.com/Wg4VlZb.png)
