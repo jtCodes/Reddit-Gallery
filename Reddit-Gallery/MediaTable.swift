@@ -64,6 +64,7 @@ class MediaTable: NSObject, UITableViewDataSource, UITableViewDelegate{
         imageCell.selectedBackgroundView = backgroundView
         
         let thumbUrl = postArray[indexPath.row].fallBackThumb
+        print("cell", thumbUrl)
         imageCell.postImage.kf.setImage(with: URL(string: thumbUrl), completionHandler: {
             (image, error, cacheType, imageUrl) in
 //            if image != nil {

@@ -59,6 +59,7 @@ class MediaPageViewController: UIViewController, UIPageViewControllerDataSource,
         let origImage = UIImage(named: "play")
         let tintedImage = origImage?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
         button.setImage(tintedImage, for: .normal)
+        button.tintColor = themeDict["com"]
         button.isUserInteractionEnabled = true
         return button
     }()
@@ -72,6 +73,8 @@ class MediaPageViewController: UIViewController, UIPageViewControllerDataSource,
     let mediaTimeLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
+        label.text = "00:00 / 00:04"
+        label.font = label.font.withSize(12)
         return label
     }()
     
@@ -95,7 +98,7 @@ class MediaPageViewController: UIViewController, UIPageViewControllerDataSource,
     
     var mediaItemControlIsHidden = false
     var replayButtonIsHidden = true
-    var isCurrentMediaYt = true
+    var isCurrentMediaVideo = false
     
     var vlcState = "paused"
     
@@ -148,11 +151,13 @@ class MediaPageViewController: UIViewController, UIPageViewControllerDataSource,
     
     func newMediaItemDidAppeared(pageIndex: Int) {
         filenameLabel.text = postMediaItems[pageIndex].title
+        vlcControlsContainer.isHidden = !postMediaItems[pageIndex].isVideo
+        isCurrentMediaVideo = postMediaItems[pageIndex].isVideo
     }
     
     func mediaControlsVisibilityDidChange(isHidden: Bool) {
         if !isHidden {
-            vlcControlsContainer.isHidden = !isCurrentMediaYt
+            vlcControlsContainer.isHidden = !isCurrentMediaVideo
             mediaInfoContainer.isHidden = false
             self.mediaInfoContainer.snp.updateConstraints( { make in
                 make.top.equalTo(self.view.snp.top).offset(0)
@@ -217,13 +222,13 @@ class MediaPageViewController: UIViewController, UIPageViewControllerDataSource,
     func vlcVideoEnded() {
         vlcState = "ended"
         
-        print("done celgate")
+//        print("done celgate")
         let origImage = UIImage(named: "play")
         let tintedImage = origImage?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
         playButton.setImage(tintedImage, for: .normal)
-        
-        replayButton.isHidden = false
-        mediaPlayerSlider.value = 1
+//        
+//        replayButton.isHidden = false
+//        mediaPlayerSlider.value = 1
     }
     
     //MARK: - PageView Setup
@@ -338,24 +343,23 @@ class MediaPageViewController: UIViewController, UIPageViewControllerDataSource,
             }
             
             mediaTimeLabel.snp.makeConstraints { make in
-                make.width.equalTo(50)
                 make.height.equalTo(50)
-                make.bottom.equalTo(mediaPlayerSlider.snp.top)
+                make.leading.equalTo(mediaPlayerSlider.snp.trailing).offset(5)
+                make.trailing.equalTo(vlcControlsContainer).offset(-10)
+                make.centerY.equalTo(vlcControlsContainer)
             }
             
             playButton.snp.makeConstraints { make in
                 make.left.equalTo(vlcControlsContainer).offset(10)
-                make.right.equalTo(mediaPlayerSlider.snp.left).offset(-5)
                 make.centerY.equalTo(vlcControlsContainer)
                 make.height.equalTo(35)
                 make.width.equalTo(35)
             }
             
             mediaPlayerSlider.snp.makeConstraints { make in
-                make.right.equalTo(vlcControlsContainer).offset(-10)
-                make.left.equalTo(playButton.snp.right).offset(5)
+                make.left.equalTo(playButton.snp.right).offset(10)
+                make.trailing.equalTo(mediaTimeLabel.snp.leading).offset(-10)
                 make.height.equalTo(20)
-                make.width.equalTo(view.frame.size.width * 0.5)
                 make.centerY.equalTo(vlcControlsContainer)
             }
             

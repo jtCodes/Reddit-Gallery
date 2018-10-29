@@ -39,7 +39,6 @@ class ViewController: UIViewController {
         }
         
         fetchPosts(url: reqUrl, completion: {response in
-            print(response[0])
             self.mediaTable = MediaTable(self.tableView, response[0] as! [Post])
             self.mediaTable.tableView.reloadData()
         })

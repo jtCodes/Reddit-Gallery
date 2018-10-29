@@ -87,6 +87,7 @@ class MediaItemViewController: UIViewController, UIScrollViewDelegate, UIGesture
     var imageUrl: URL!
     var mediaItem: Post!
     var media = VLCMedia()
+    var urlToUse = ""
     weak var timer: Timer?
     
     let group = DispatchGroup()
@@ -112,14 +113,39 @@ class MediaItemViewController: UIViewController, UIScrollViewDelegate, UIGesture
         
         view.addSubview(backgroundView)
         //    scrollView.addSubview(closeButton)
-        getStreamUrl()
-    
-        group.notify(queue: .main) {
-            self.createVideoView()
-            if self.viewIfLoaded?.window != nil {
-                // viewController is visible
-                self.mediaPlayer.play()
+        
+        media = VLCMedia(url: URL(string: mediaItem.url)!)
+        urlToUse = mediaItem.url
+        
+        if mediaItem.isYt {
+            getStreamUrl()
+            group.notify(queue: .main) {
+                print("grouppy notify")
+                self.createVideoView()
+                if self.viewIfLoaded?.window != nil {
+                    // viewController is visible
+                    self.mediaPlayer.play()
+                }
             }
+        } else if mediaItem.isVideo {
+            if mediaItem.isRedditPreviewVideo {
+                urlToUse = mediaItem.redditPreviewUrl!
+                media = VLCMedia(url: URL(string: mediaItem.redditPreviewUrl!)!)
+            }
+            createVideoView()
+            if viewIfLoaded?.window != nil {
+                // viewController is visible
+                mediaPlayer.play()
+            }
+        } else {
+            backgroundView.backgroundColor = .black
+            
+            scrollView.delegate = self
+            //      scrollView.addGestureRecognizer(tapGesture)
+            view.addSubview(scrollView)
+            createImageView()
+            centerConstraint = imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            centerConstraint.isActive = false
         }
     }
     
@@ -130,7 +156,7 @@ class MediaItemViewController: UIViewController, UIScrollViewDelegate, UIGesture
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
+        print("is reddit preview", mediaItem.redditPreviewUrl)
         print("did appear")
         //Clear previous reference incase user decided to cancel swipe
         parentVC?.delegate = nil
@@ -240,14 +266,17 @@ class MediaItemViewController: UIViewController, UIScrollViewDelegate, UIGesture
             print("Error trying to play video!")
         }
         else if state == VLCMediaPlayerState.ended || state == VLCMediaPlayerState.stopped {
-            mediaPlayer.media = VLCMedia(url: URL(string: mediaItem!.url)!) //replay
-            mediaPlayer.play()
+            replay()
         }
     }
     
     func replayButtonClicked() {
         print("replay button delegat")
-        mediaPlayer.media = VLCMedia(url: URL(string: mediaItem!.url)!) //replay
+        replay()
+    }
+    
+    func replay() {
+        mediaPlayer.media = VLCMedia(url: URL(string: urlToUse)!) //replay
         mediaPlayer.play()
     }
     
@@ -267,6 +296,7 @@ class MediaItemViewController: UIViewController, UIScrollViewDelegate, UIGesture
         }
         else if state == VLCMediaPlayerState.ended || state == VLCMediaPlayerState.stopped {
             print("Video is done playing")
+            replay()
             self.delegate?.vlcVideoEnded!()
         }
     }
@@ -323,13 +353,11 @@ class MediaItemViewController: UIViewController, UIScrollViewDelegate, UIGesture
         
         let orientation = UIDevice.current.orientation
         var widthToUse: CGFloat = view.frame.size.width
-        var heightToUse: CGFloat = view.frame.size.height
-        if mediaItem.is_video {
+        if mediaItem.isVideo {
             if (orientation.isLandscape) {
                 print("Switched to landscape")
                 //Always fill entire screen
                 widthToUse = view.frame.size.height
-                heightToUse = view.frame.size.width
             }
             else if(orientation.isPortrait) {
 
@@ -479,6 +507,7 @@ class MediaItemViewController: UIViewController, UIScrollViewDelegate, UIGesture
             if let streamURLs = video?.streamURLs, let streamURL = (streamURLs[XCDYouTubeVideoQualityHTTPLiveStreaming] ?? streamURLs[YouTubeVideoQuality.hd720] ?? streamURLs[YouTubeVideoQuality.medium360] ?? streamURLs[YouTubeVideoQuality.small240]) {
                 //        playerViewController?.player = AVPlayer(url: streamURL)
                 self.media = VLCMedia(url: streamURL)
+                self.urlToUse = streamURL.absoluteString
                 self.group.leave()
                 print("stream url", streamURL)
             }
@@ -489,7 +518,7 @@ class MediaItemViewController: UIViewController, UIScrollViewDelegate, UIGesture
         self.scrollView.addSubview(imageView)
         
         var thumbImage: UIImage!
-        ImageCache.default.retrieveImage(forKey: mediaItem.fallBackThumb, options: nil) {
+        ImageCache.default.retrieveImage(forKey: mediaItem.url, options: nil) {
             image, cacheType in
             if let image = image {
                 print("Get image \(image), cacheType: \(cacheType).")
@@ -499,7 +528,7 @@ class MediaItemViewController: UIViewController, UIScrollViewDelegate, UIGesture
                 print("Not exist in cache.")
             }
             self.imageView.kf.indicatorType = .activity
-            self.imageView.kf.setImage(with: URL(string: self.mediaItem!.fallBackThumb), placeholder: thumbImage, completionHandler: {
+            self.imageView.kf.setImage(with: URL(string: self.mediaItem!.url), placeholder: thumbImage, completionHandler: {
                 (image, error, cacheType, imageUrl) in
                 print("image loaded")
             })
@@ -539,7 +568,7 @@ class MediaItemViewController: UIViewController, UIScrollViewDelegate, UIGesture
                 make.centerY.equalTo(view)
             }
             
-            if (!mediaItem.isYt){
+            if (!mediaItem.isVideo){
                 scrollView.snp.makeConstraints { make in
                     make.width.equalTo(view.snp.width)
                     make.height.equalTo(view.snp.height)
