@@ -63,8 +63,6 @@ func fetchPosts(url: String, completion: @escaping (_ success: [Any]) -> Void) {
                                     isRedditPreviewVideo: isRedditPreviewVideo,
                                     redditPreviewUrl: redditPreviewUrl)
                     posts.append(post)
-                    
-                    print(postData.data.thumbnail)
                 }
                 completion([posts])
             }
