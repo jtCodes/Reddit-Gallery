@@ -22,7 +22,7 @@ class MediaTable: NSObject, UITableViewDataSource, UITableViewDelegate{
     
     let saturation = CGFloat(0.70)
     let lightness = CGFloat(1)
-
+    
     var postArray = [Post]()
     var tableView: UITableView
     
@@ -30,12 +30,12 @@ class MediaTable: NSObject, UITableViewDataSource, UITableViewDelegate{
         
         postArray = data
         tableView = tv
-
+        
         tableView.tableFooterView = UIView(frame: .zero)
         tableView.estimatedRowHeight = 250
         tableView.rowHeight = UITableView.automaticDimension
-//        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0) //top,left,bottom,right
-//        tableView.separatorColor = themeDict["cell"]
+        //        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0) //top,left,bottom,right
+        //        tableView.separatorColor = themeDict["cell"]
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         tableView.backgroundColor = themeDict["table"]
         tableView.sectionIndexBackgroundColor = themeDict["table"]
@@ -63,18 +63,17 @@ class MediaTable: NSObject, UITableViewDataSource, UITableViewDelegate{
         backgroundView.backgroundColor = themeDict["table"]
         imageCell.selectedBackgroundView = backgroundView
         
-        var thumbUrl = postArray[indexPath.row].availThumb
-
-        print("cell", thumbUrl)
+        let thumbUrl = postArray[indexPath.row].availThumb
+        
         imageCell.postImage.kf.setImage(with: URL(string: thumbUrl), completionHandler: {
             (image, error, cacheType, imageUrl) in
-//            if image != nil {
-//                let newCellHeight = self.getAspectRatioAccordingToiPhones(cellImageFrame: imageCell.frame.size, downloadedImage: image!)
-//                imageCell.postImage.snp.makeConstraints({make in
-//                    make.height.equalTo(newCellHeight)
-//                })
-//                imageCell.layoutIfNeeded()
-//            }
+            //            if image != nil {
+            //                let newCellHeight = self.getAspectRatioAccordingToiPhones(cellImageFrame: imageCell.frame.size, downloadedImage: image!)
+            //                imageCell.postImage.snp.makeConstraints({make in
+            //                    make.height.equalTo(newCellHeight)
+            //                })
+            //                imageCell.layoutIfNeeded()
+            //            }
         })
         return imageCell
         
@@ -96,7 +95,7 @@ class MediaTable: NSObject, UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "r/funny"
+        return "r/videos"
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
