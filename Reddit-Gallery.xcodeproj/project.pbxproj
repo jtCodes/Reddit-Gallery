@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -116,6 +116,35 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6BAEB8DA2666B6DA004BE475 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ED705B0021855151005D0B17 /* RedditApi.swift */,
+				ED705AFE21855028005D0B17 /* Post.swift */,
+				ED705AFC21851018005D0B17 /* SubRedditDecode.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6BAEB8DB2666B6DF004BE475 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ED705B0421855711005D0B17 /* MediaTableCell.swift */,
+				ED705B02218556FC005D0B17 /* MediaTable.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6BAEB8DC2666B6E4004BE475 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ED705AD0218507C3005D0B17 /* ViewController.swift */,
+				ED2787032186077E00F4A7A8 /* MediaPageViewController.swift */,
+				ED705B062186048B005D0B17 /* MediaItemViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		71C594450B07E95BE21AA74F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,15 +183,10 @@
 		ED705ACD218507C3005D0B17 /* Reddit-Gallery */ = {
 			isa = PBXGroup;
 			children = (
+				6BAEB8DC2666B6E4004BE475 /* ViewController */,
+				6BAEB8DB2666B6DF004BE475 /* View */,
+				6BAEB8DA2666B6DA004BE475 /* Model */,
 				ED705ACE218507C3005D0B17 /* AppDelegate.swift */,
-				ED705B0421855711005D0B17 /* MediaTableCell.swift */,
-				ED705B02218556FC005D0B17 /* MediaTable.swift */,
-				ED705AD0218507C3005D0B17 /* ViewController.swift */,
-				ED705B062186048B005D0B17 /* MediaItemViewController.swift */,
-				ED2787032186077E00F4A7A8 /* MediaPageViewController.swift */,
-				ED705B0021855151005D0B17 /* RedditApi.swift */,
-				ED705AFC21851018005D0B17 /* SubRedditDecode.swift */,
-				ED705AFE21855028005D0B17 /* Post.swift */,
 				ED705AD2218507C3005D0B17 /* Main.storyboard */,
 				ED705AD5218507C4005D0B17 /* Assets.xcassets */,
 				ED705AD7218507C4005D0B17 /* LaunchScreen.storyboard */,
