@@ -6,7 +6,9 @@ Git clone this project and go to the folder then do
 ```
 pod install
 ```
-| :exclamation: Do this right after pod install :exclamation:|
+Then open Reddit-Gallery.xcworkspace
+
+:exclamation: Do this right after pod install :exclamation:
 
 <ol>
 <li>Search for XCDYouTubeVideoOperation.m in xcode </li>
