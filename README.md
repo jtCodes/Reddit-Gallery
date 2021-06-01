@@ -1,5 +1,5 @@
 # Reddit-Gallery
-Browse Reddit's funny videos subreddit
+Browse Reddit's videos subreddit
 
 ## Installation
 Git clone this project and go to the folder then do
