@@ -1,19 +1,19 @@
 PODS:
-  - Alamofire (4.7.3)
+  - Alamofire (4.9.1)
   - Kingfisher (4.8.1)
-  - MobileVLCKit (3.1.5)
+  - MobileVLCKit (3.3.16.3)
   - SnapKit (4.0.1)
-  - XCDYouTubeKit (2.6.0)
+  - XCDYouTubeKit (2.15.2)
 
 DEPENDENCIES:
-  - Alamofire (~> 4.7)
-  - Kingfisher (~> 4.8.1)
+  - Alamofire
+  - Kingfisher
   - MobileVLCKit
-  - SnapKit (~> 4.0.0)
-  - XCDYouTubeKit (~> 2.6)
+  - SnapKit
+  - XCDYouTubeKit
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - Alamofire
     - Kingfisher
     - MobileVLCKit
@@ -21,12 +21,12 @@ SPEC REPOS:
     - XCDYouTubeKit
 
 SPEC CHECKSUMS:
-  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   Kingfisher: 868c1149679a7ab6869be118faa9b5aed154aaf0
-  MobileVLCKit: 4d44e56380d0ee41c76f9ec7015d3a4b62a963a3
+  MobileVLCKit: 2b408a9c5cc327353afab418fafbc942780b248a
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
-  XCDYouTubeKit: 76f14b161e9563541a3674b6b5bfb61c4b72b269
+  XCDYouTubeKit: b120aced3d8638ffb570c5450cddb5a1dac448c7
 
-PODFILE CHECKSUM: 4a5baf8e45b69690103701387fa294d1adca6c31
+PODFILE CHECKSUM: 2c4cc9cb37684044b7c7f8544c395220e6ab30a1
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.10.1
