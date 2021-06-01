@@ -49,6 +49,7 @@ struct SubRedditDecode: Decodable {
     }
     
     struct Source: Decodable {
+        let url: String
         let width: Int
         let height: Int
     }

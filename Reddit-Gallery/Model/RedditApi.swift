@@ -48,23 +48,23 @@ func fetchPosts(url: String, completion: @escaping (_ success: [Any]) -> Void) {
                             fallBackThumb = "http://img.youtube.com/vi/" + videoID + "/sddefault.jpg"
                         }
                     } else {
-                        fallBackThumb = postData.data.url
+                        fallBackThumb = postData.data.thumbnail.convertSpecialCharacters()
                     }
                     
                     let post = Post(title: postData.data.title, postHint: postData.data.post_hint,
-                                    thumbnail: postData.data.thumbnail,
+                                    thumbnail: postData.data.thumbnail.convertSpecialCharacters(),
                                     url: postData.data.url,
                                     isVideo: isVideo,
                                     maxThumb: "http://img.youtube.com/vi/" + videoID + "/maxresdefault.jpg",
                                     fallBackThumb: fallBackThumb,
-                                    availThumb: "",
+                                    availThumb: postData.data.preview?.images?[0].source?.url.convertSpecialCharacters() ?? "reddit.com",
                                     ytVideoId: videoID,
                                     isYt: isYt,
                                     isRedditPreviewVideo: isRedditPreviewVideo,
                                     redditPreviewUrl: redditPreviewUrl)
                     posts.append(post)
                     
-                    print(postData.data.domain, postData.data.post_hint, postData.data.preview)
+                    print(postData.data.thumbnail)
                 }
                 completion([posts])
             }
