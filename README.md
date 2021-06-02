@@ -2,19 +2,23 @@
 Browse Reddit's videos subreddit
 
 ## Installation
-Git clone this project and go to the folder then do
+<ol>
+<li>git clone this project</li> 
+<li>open terminal and cd to Reddit-Gallery directory</li>
+<li>then do</li> 
+</ol>
+  
 ```
 pod install
 ```
-Then open Reddit-Gallery.xcworkspace
-
-:exclamation: Do this right after pod install :exclamation:
+  
+:exclamation: then open Reddit-Gallery.xcworkspace and do the following: :exclamation:
 
 <ol>
-<li>Search for XCDYouTubeVideoOperation.m in xcode </li>
-<li>Open the file</li>
-<li>Do a CMD + f for get_video_info</li>
-<li>Append &html5=1 to the query string for https://www.youtube.com/get_video_info? requests. There are two.</li>
+<li>search for XCDYouTubeVideoOperation.m in xcode </li>
+<li>open the file</li>
+<li>do a CMD + f for get_video_info</li>
+<li>append &html5=1 to the query string for https://www.youtube.com/get_video_info? requests. There are two.</li>
 </ol>
   
 ```obj-c
